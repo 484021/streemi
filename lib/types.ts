@@ -34,3 +34,9 @@ export type Show = {
   totalEpisodes: number;
   episodes: Episode[];
 };
+
+export type EpisodeSourceList = EpisodeSource[];
+export type EpisodeSource = {
+  name: string;
+  url: string;
+};

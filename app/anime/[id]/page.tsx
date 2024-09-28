@@ -81,7 +81,7 @@ export default function Page({ params }: { params: { id: string } }) {
           {episodes.map((episode, index) => (
             <Link
               key={index}
-              href="#"
+              href={`/watch-anime/${episode.id}`}
               className="bg-muted rounded-lg overflow-hidden transition-all hover:bg-muted/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               prefetch={false}
             >
