@@ -1,14 +1,7 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { CONSUMET_API_URL } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,20 +32,20 @@ export default function Home() {
   const [results, setResults] = useState<EpisodeResult[]>([]);
 
   //fetch recentEpisodes
-  const fetchData = async () => {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setData(data);
-      setResults(data.results);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setData(data);
+        setResults(data.results);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
     fetchData();
-  }, []);
+  }, [url]);
 
   console.log(data);
 
@@ -63,8 +56,7 @@ export default function Home() {
       <div>
         Recent Episodes
         <div className="">
-        {
-          results.map((result) => (
+          {results.map((result) => (
             <Card key={result.id}>
               <CardContent>
                 <div className="flex flex-row">
@@ -81,8 +73,7 @@ export default function Home() {
                 </div>
               </CardContent>
             </Card>
-          ))
-        }
+          ))}
         </div>
       </div>
     </main>
