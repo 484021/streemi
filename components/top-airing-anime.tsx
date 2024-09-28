@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
-//   CardDescription,
+  //   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -34,33 +34,35 @@ export default function TopAiringAnime() {
     fetchData();
   }, [url, data]);
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center mx-auto">
       <h1 className="text-2xl mt-4">Top Airing Anime</h1>
       <div className="pt-2 flex flex-wrap w-full h-full">
-        {results.map((result) => (
-          <Card
-            className="w-[140px] m-2 flex flex-col items-center justify-center "
-            key={result.id}
-          >
-            <CardHeader className="text-center">
-              {/* <CardDescription className="text-lg">{index + 1}</CardDescription> */}
-              <CardTitle>{result.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Image
-                src={result.image}
-                alt={result.title}
-                width={250}
-                height={350}
-              />
-            </CardContent>
-            <CardFooter>
-              <Link href="/">
-                <Button>Watch Now</Button>
-              </Link>
-            </CardFooter>
-          </Card>
-        ))}
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 ">
+          {results.map((result) => (
+            <Card
+              className="w-[140px] m-2 flex flex-col items-center justify-center "
+              key={result.id}
+            >
+              <CardHeader className="text-center">
+                {/* <CardDescription className="text-lg">{index + 1}</CardDescription> */}
+                <CardTitle>{result.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Image
+                  src={result.image}
+                  alt={result.title}
+                  width={250}
+                  height={350}
+                />
+              </CardContent>
+              <CardFooter>
+                <Link href="/">
+                  <Button>Watch Now</Button>
+                </Link>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );
