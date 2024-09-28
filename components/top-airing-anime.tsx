@@ -39,7 +39,7 @@ export default function TopAiringAnime() {
       <div className="pt-2 flex flex-wrap w-full h-full">
         {results.map((result) => (
           <Card
-            className="w-[150px] m-2 flex flex-col items-center justify-center"
+            className="w-[140px] m-2 flex flex-col items-center justify-center "
             key={result.id}
           >
             <CardHeader className="text-center">
@@ -55,7 +55,7 @@ export default function TopAiringAnime() {
               />
             </CardContent>
             <CardFooter>
-              <Link href={result.url}>
+              <Link href="/">
                 <Button>Watch Now</Button>
               </Link>
             </CardFooter>
