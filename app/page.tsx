@@ -28,7 +28,7 @@ export default function Home() {
 
   console.log(process.env.CONSUMET_API_URL);
 
-  const [data, setData] = useState<Data[]>({});
+  const [data, setData] = useState<Data[]>([]);
   const [results, setResults] = useState<EpisodeResult[]>([]);
 
   //fetch recentEpisodes
