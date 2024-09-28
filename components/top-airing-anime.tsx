@@ -36,10 +36,10 @@ export default function TopAiringAnime() {
   return (
     <div className="flex flex-col items-center justify-center">
       <h1 className="text-2xl mt-4">Top Airing Anime</h1>
-      <div className="pt-2 flex flex-wrap w-full h-full mx-auto">
+      <div className="pt-2 flex flex-wrap w-full h-full">
         {results.map((result) => (
           <Card
-            className="w-[160px] m-2 flex flex-col items-center justify-center"
+            className="w-[150px] m-2 flex flex-col items-center justify-center"
             key={result.id}
           >
             <CardHeader className="text-center">
