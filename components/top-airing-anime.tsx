@@ -17,8 +17,6 @@ import Link from "next/link";
 export default function TopAiringAnime() {
   const url = CONSUMET_API_URL + "anime/gogoanime/top-airing";
 
-  console.log(process.env.CONSUMET_API_URL);
-
   const [data, setData] = useState<Data[]>([]);
   const [results, setResults] = useState<EpisodeResult[]>([]);
 
@@ -40,9 +38,12 @@ export default function TopAiringAnime() {
       <h1 className="text-2xl mt-4">Top Airing Anime</h1>
       <div className="pt-2 flex flex-wrap w-full h-full mx-auto">
         {results.map((result, index) => (
-          <Card className="w-[250px] m-2 " key={result.id}>
-            <CardHeader>
-              <CardDescription className="text-lg">{index + 1}</CardDescription>
+          <Card
+            className="w-[160px] m-2 flex flex-col items-center justify-center"
+            key={result.id}
+          >
+            <CardHeader className="text-center">
+              {/* <CardDescription className="text-lg">{index + 1}</CardDescription> */}
               <CardTitle>{result.title}</CardTitle>
             </CardHeader>
             <CardContent>

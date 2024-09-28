@@ -17,8 +17,6 @@ import { useState, useEffect } from "react";
 export default function HeroSlider() {
   const url = CONSUMET_API_URL + "anime/gogoanime/recent-episodes";
 
-  console.log(process.env.CONSUMET_API_URL);
-
   const [data, setData] = useState<Data[]>([]);
   const [results, setResults] = useState<EpisodeResult[]>([]);
 
