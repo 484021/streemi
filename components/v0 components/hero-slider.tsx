@@ -47,7 +47,7 @@ export default function HeroSlider() {
                 <Image
                   src={result.image}
                   alt="Hero Slide"
-                  className="h-full w-full object-cover "
+                  className="h-full w-full object-cover"
                   width="1200"
                   height="600"
                 />
