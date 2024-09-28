@@ -64,7 +64,7 @@ export default function NavBar() {
             </li>
           </ul>
         </div> */}
-        <form onSubmit={handleSearch} className="flex gap-2">
+        <form onSubmit={handleSearch} className="flex gap-2 flex-wrap items-center justify-center">
           <Input
             placeholder="Search Anime"
             className="w-96"
