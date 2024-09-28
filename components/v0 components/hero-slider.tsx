@@ -34,9 +34,8 @@ export default function HeroSlider() {
       }
     };
     fetchData();
-  }, [url]);
+  }, [url, data]);
 
-  console.log(data);
   return (
     <div className="w-full">
       <Carousel className="relative w-full">

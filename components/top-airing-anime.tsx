@@ -12,6 +12,7 @@ import {
 } from "./ui/card";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function TopAiringAnime() {
   const url = CONSUMET_API_URL + "anime/gogoanime/top-airing";
@@ -33,29 +34,33 @@ export default function TopAiringAnime() {
       }
     };
     fetchData();
-  }, [url]);
+  }, [url, data]);
   return (
-    <div className="pt-2 flex flex-wrap">
-      {results.map((result, index) => (
-        <Card key={index} className="m-2 w-[200px]">
-          <CardHeader>
-            <CardTitle>{result.title}</CardTitle>
-            <CardDescription>Episode {result.episodeNumber}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Image
-              src={result.image}
-              alt="Hero Slide"
-              className="h-full w-full object-cover"
-              width={200}
-              height={300}
-            />
-          </CardContent>
-          <CardFooter>
-            <Button>Watch Now</Button>
-          </CardFooter>
-        </Card>
-      ))}
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="text-2xl mt-4">Top Airing Anime</h1>
+      <div className="pt-2 flex flex-wrap w-full h-full mx-auto">
+        {results.map((result, index) => (
+          <Card className="w-[250px] m-2 " key={result.id}>
+            <CardHeader>
+              <CardDescription className="text-lg">{index + 1}</CardDescription>
+              <CardTitle>{result.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Image
+                src={result.image}
+                alt={result.title}
+                width={250}
+                height={350}
+              />
+            </CardContent>
+            <CardFooter>
+              <Link href={result.url}>
+                <Button>Watch Now</Button>
+              </Link>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
