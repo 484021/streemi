@@ -10,7 +10,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const url = CONSUMET_API_URL + `anime/gogoanime/info/${animeId}`;
 
-  const [show, setShow] = useState<Show>({});
+  const [show, setShow] = useState<Show>({} as Show);
   const [episodes, setEpisodes] = useState<Episode[]>([]);
 
   useEffect(() => {
