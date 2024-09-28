@@ -1,6 +1,17 @@
 "use client";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Input } from "@/components/ui/input";
-import { use, useEffect, useState } from "react";
+import { Label } from "@/components/ui/label";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 type EpisodeResult = {
   id: string;
@@ -48,12 +59,34 @@ export default function Home() {
       <div>
         Recent Episodes
         <div>
-          {results.map((result) => (
-            <div key={result.id}>
-              <img src={result.image} alt={result.title} />
-              <p>{result.title}</p>
-            </div>
-          ))}
+          <Carousel className="min-w-52 max-w-3xl">
+            <CarouselContent className="-ml-1">
+              {results.map((result) => (
+                <CarouselItem
+                  key={result.id}
+                  className="pl-1 md:basis-1/2 lg:basis-1/3"
+                >
+                  <div className="p-1">
+                    <Card className="">
+                      <Link href={result.url}>
+                        <CardContent className="flex flex-col aspect-square items-center justify-center p-6">
+                          <Image
+                            src={result.image}
+                            alt={result.title}
+                            width={200}
+                            height={200}
+                          />
+                          <Label>{result.title}</Label>
+                        </CardContent>
+                      </Link>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
     </main>
