@@ -1,18 +1,23 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { ModeToggle } from "./ui/mode-toggle";
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
 
 export default function NavBar() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    router.push(`/search/${searchQuery}`);
+  };
+
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-4 gap-4">
-        <a
-          href="/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <span className="text-2xl mx-auto">
-            Streemi
-          </span>
+        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <span className="text-2xl mx-auto">Streemi</span>
         </a>
         {/* <button
           data-collapse-toggle="navbar-default"
@@ -59,7 +64,19 @@ export default function NavBar() {
             </li>
           </ul>
         </div> */}
-        <Input placeholder="Search Anime" className="w-96"/>
+        <form onSubmit={handleSearch} className="flex gap-2">
+          <Input
+            placeholder="Search Anime"
+            className="w-96"
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onSubmit={(e) => {
+              e.preventDefault();
+              // Perform search logic here
+            }}
+            value={searchQuery}
+          />
+          <Button type="submit">Search</Button>
+        </form>
         <ModeToggle />
       </div>
     </nav>

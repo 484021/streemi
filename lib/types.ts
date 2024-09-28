@@ -40,3 +40,17 @@ export type EpisodeSource = {
   name: string;
   url: string;
 };
+
+export type SearchResult = {
+  id: string;
+  title: string;
+  image: string;
+  releaseDate: string | null;
+  subOrDub: 'sub' | 'dub';
+};
+
+export type SearchResponse = {
+  currentPage: number;
+  hasNextPage: boolean;
+  results: SearchResult[];
+};
