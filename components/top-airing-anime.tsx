@@ -56,7 +56,7 @@ export default function TopAiringAnime() {
                 />
               </CardContent>
               <CardFooter>
-                <Link href="/">
+                <Link href={`/anime/${result.id}`}>
                   <Button>Watch Now</Button>
                 </Link>
               </CardFooter>
