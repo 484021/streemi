@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
-  CardDescription,
+//   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -37,7 +37,7 @@ export default function TopAiringAnime() {
     <div className="flex flex-col items-center justify-center">
       <h1 className="text-2xl mt-4">Top Airing Anime</h1>
       <div className="pt-2 flex flex-wrap w-full h-full mx-auto">
-        {results.map((result, index) => (
+        {results.map((result) => (
           <Card
             className="w-[160px] m-2 flex flex-col items-center justify-center"
             key={result.id}
