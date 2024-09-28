@@ -11,7 +11,6 @@ import { Data, EpisodeResult } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Label } from "../ui/label";
 
 //fetch recentEpisodes
 
@@ -54,7 +53,6 @@ export default function HeroSlider() {
                 />
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center space-y-6 px-4 text-center text-white">
-                  <div className="">
                     <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                       {result.title}
                     </h1>
@@ -68,7 +66,6 @@ export default function HeroSlider() {
                     >
                       Watch
                     </Link>
-                  </div>
                 </div>
               </div>
             </CarouselItem>
