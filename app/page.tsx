@@ -3,7 +3,7 @@ import HeroSlider from "@/components/v0 components/hero-slider";
 
 export default function Home() {
   return (
-    <main className="flex items-center justify-center flex-wrap px-10">
+    <main className="flex items-center justify-center flex-wrap px-5">
       <HeroSlider />
       <TopAiringAnime />
     </main>

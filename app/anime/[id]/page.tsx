@@ -1,8 +1,8 @@
 "use client";
+import EpisodesSection from "@/components/episodes-section";
 import { CONSUMET_API_URL } from "@/lib/constants";
 import { Episode, Show } from "@/lib/types";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 export default function Page({ params }: { params: { id: string } }) {
@@ -75,7 +75,8 @@ export default function Page({ params }: { params: { id: string } }) {
           </div>
         </div>
       </section>
-      <section className="mt-12 md:mt-16">
+      <EpisodesSection episodes={episodes} />
+      {/* <section className="mt-12 md:mt-16">
         <h2 className="text-2xl font-bold">Episodes</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {episodes.map((episode, index) => (
@@ -93,7 +94,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </Link>
           ))}
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

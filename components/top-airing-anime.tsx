@@ -35,7 +35,7 @@ export default function TopAiringAnime() {
   }, [url, data]);
   return (
     <div className="flex flex-col items-center justify-center mx-auto">
-      <h1 className="text-2xl mt-4">Top Airing Anime</h1>
+      <h1 className="text-2xl mt-4">Most Popular</h1>
       <div className="pt-2 flex flex-wrap w-full h-full">
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 ">
           {results.map((result) => (

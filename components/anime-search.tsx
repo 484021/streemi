@@ -17,8 +17,8 @@ export default function AnimeSearchForm() {
       <div className="relative">
         <Input
           type="search"
-          placeholder="Search for your favorite anime..."
-          className="h-12 w-full rounded-md  focus:outline-none focus:ring-1 focus:ring-primary"
+          placeholder="Search Anime..."
+          className="h-12 w-full rounded-md  focus:outline-none focus:ring-1 focus:ring-primary text-violet-200"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />

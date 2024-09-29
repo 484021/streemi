@@ -7,18 +7,18 @@ import AnimeSearchForm from "../anime-search";
 
 export default function HeroSlider() {
   return (
-    <section className="relative w-full h-[80vh] overflow-hidden">
+    <section className="relative w-full h-[80vh] overflow-hidden shadow-inner">
       <Image src={luffy} alt="luffy" className="object-cover w-full h-full" />
       <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
         <div className="text-center space-y-6 px-4 md:px-0 items-center justify-center">
-          <h1 className="text-4xl md:text-6xl font-bold">
+          <h1 className="text-4xl md:text-6xl font-bold text-violet-200">
             Discover the Best Anime for Free
           </h1>
           <div className="mx-auto w-full">
             <AnimeSearchForm />
           </div>
           <div className="flex justify-center">
-            <p className="text-lg md:text-xl text-white max-w-[700px] text-center">
+            <p className="text-lg md:text-xl max-w-[700px] text-center text-violet-200">
               Immerse yourself in the captivating world of anime. Stream the
               latest episodes, explore classic series, and discover hidden gems.
             </p>

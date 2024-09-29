@@ -16,7 +16,6 @@ export default function Page({ params }: { params: { id: string } }) {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
         setEpisodeStreams(data);
       } catch (error) {
         console.error("Error fetching data:", error);
