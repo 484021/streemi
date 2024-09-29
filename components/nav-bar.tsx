@@ -1,6 +1,6 @@
 import React from "react";
 
-import { MountainIcon } from "lucide-react";
+import { Bot, MountainIcon } from "lucide-react";
 import Link from "next/link";
 import { ModeToggle } from "./ui/mode-toggle";
 import AnimeSearchForm from "./anime-search";
@@ -15,8 +15,10 @@ export default function NavBar() {
             className="flex items-center gap-2 font-bold"
             prefetch={false}
           >
-            <MountainIcon className="h-6 w-6" />
-            <span className="">Streemi</span>
+            <div className="flex items-center gap-2">
+              <Bot className="h-8 w-8" />
+              <span className=" mt-1">Streemi</span>
+            </div>
           </Link>
           <AnimeSearchForm />
           <div className="">
