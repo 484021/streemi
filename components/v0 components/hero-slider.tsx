@@ -1,12 +1,4 @@
-"use client";
-
-import { CONSUMET_API_URL } from "@/lib/constants";
-import { Data, EpisodeResult } from "@/lib/types";
-import { SearchIcon } from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import luffy from "@/public/luffy.jpg";
 import Image from "next/image";
 import AnimeSearchForm from "../anime-search";
@@ -14,25 +6,6 @@ import AnimeSearchForm from "../anime-search";
 //fetch recentEpisodes
 
 export default function HeroSlider() {
-  const url = CONSUMET_API_URL + "anime/gogoanime/recent-episodes";
-
-  const [data, setData] = useState<Data[]>([]);
-  const [results, setResults] = useState<EpisodeResult[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setData(data);
-        setResults(data.results);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, [url, data]);
-
   return (
     <section className="relative w-full h-[80vh] overflow-hidden">
       <Image src={luffy} alt="luffy" className="object-cover w-full h-full" />

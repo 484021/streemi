@@ -18,15 +18,14 @@ export default function AnimeSearchForm() {
         <Input
           type="search"
           placeholder="Search for your favorite anime..."
-          className="h-12 w-full rounded-md bg-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-1 focus:ring-primary"
+          className="h-12 w-full rounded-md  focus:outline-none focus:ring-1 focus:ring-primary"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <Button
           type="submit"
-          variant="ghost"
           size="icon"
-          className="absolute right-2 top-1/2 -translate-y-1/2 text-white"
+          className="absolute right-2 top-1/2 -translate-y-1/2"
 
         >
           <SearchIcon className="h-6 w-6" />
