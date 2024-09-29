@@ -11,7 +11,7 @@ import { toast } from "sonner";
 export default function HeroSlider() {
   return (
     <section className="relative w-full h-[80vh] overflow-hidden shadow-inner">
-      <Image src={luffy} alt="luffy" className="object-cover w-full h-full" />
+      <Image src={luffy} alt="luffy" className="object-cover w-full h-full" priority/>
       <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
         <div className="text-center space-y-6 px-4 md:px-0 items-center justify-center">
           <h1 className="text-4xl md:text-6xl font-bold text-violet-200">

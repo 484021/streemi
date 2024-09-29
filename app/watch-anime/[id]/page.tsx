@@ -72,8 +72,8 @@ export default function Page({ params }: { params: { id: string } }) {
         </div>
 
         <h3 className="text-lg font-medium text-center mt-2">Quality</h3>
-        <div className="p-4 grid gap-4 grid-cols-6">
-          {episodeStreams?.sources.map((stream) => (
+        <div className="p-4 flex gap-2 items-center justify-center">
+          {episodeStreams?.sources.slice(0,4).map((stream) => (
             <Button
               key={stream.quality}
               onClick={() => {

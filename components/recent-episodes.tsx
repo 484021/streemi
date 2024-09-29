@@ -14,8 +14,8 @@ export default function RecentEpisodes() {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        setRecentEpisodes(data.results);
-        console.log(data.results);
+
+          setRecentEpisodes(data.results);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
