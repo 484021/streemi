@@ -24,7 +24,7 @@ export default function HeroSlider() {
             </p>
           </div>
           <Link
-            href="#"
+            href="/anime-list"
             className="inline-flex items-center justify-center h-12 px-8 rounded-md bg-primary text-primary-foreground font-medium transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
             prefetch={false}
           >

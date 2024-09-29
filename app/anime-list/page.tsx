@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Image from "next/image";
+import { FilterXIcon } from "lucide-react";
 
 // Types for Anime
 interface Anime {
@@ -21,9 +22,6 @@ interface Anime {
   genres: string[];
 }
 
-// Props for FilterIcon (if needed)
-interface FilterIconProps extends React.SVGProps<SVGSVGElement> {}
-
 // Main component
 export default function Component() {
   // State for search term
@@ -33,56 +31,62 @@ export default function Component() {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
 
   // List of animes (can also be extracted to a separate file)
-  const animes: Anime[] = [
-    {
-      id: 1,
-      title: "Demon Slayer: Kimetsu no Yaiba",
-      image: "/placeholder.svg",
-      description:
-        "A young boy becomes a demon slayer after his family is murdered and his sister is turned into a demon.",
-      genres: ["Action", "Fantasy", "Drama"],
-    },
-    {
-      id: 2,
-      title: "Attack on Titan",
-      image: "/placeholder.svg",
-      description:
-        "Humanity lives in cities surrounded by enormous walls due to the threat of the gigantic man-eating Titans that roam the land outside.",
-      genres: ["Action", "Fantasy", "Drama"],
-    },
-    {
-      id: 3,
-      title: "Spy x Family",
-      image: "/placeholder.svg",
-      description:
-        "A spy, an assassin, and a telepath must pose as a family to complete a high-stakes mission.",
-      genres: ["Comedy", "Action", "Slice of Life"],
-    },
-    {
-      id: 4,
-      title: "Jujutsu Kaisen",
-      image: "/placeholder.svg",
-      description:
-        "A boy swallows a cursed object and has a cursed spirit stuck inside his body, forcing him to join a secret organization of Jujutsu Sorcerers.",
-      genres: ["Action", "Fantasy", "Supernatural"],
-    },
-    {
-      id: 5,
-      title: "My Hero Academia",
-      image: "/placeholder.svg",
-      description:
-        "In a world where people develop superpowers, a young boy dreams of becoming a superhero despite not having a quirk.",
-      genres: ["Action", "Superhero", "Comedy"],
-    },
-    {
-      id: 6,
-      title: "Chainsaw Man",
-      image: "/placeholder.svg",
-      description:
-        "A young man makes a deal with the devil to become a mercenary who hunts down dangerous devils.",
-      genres: ["Action", "Supernatural", "Horror"],
-    },
-  ];
+
+  const animes: Anime[] = useMemo(
+    () => [
+      {
+        id: 1,
+        title: "Demon Slayer: Kimetsu no Yaiba",
+        image: "/placeholder.svg",
+        description:
+          "A young boy becomes a demon slayer after his family is murdered and his sister is turned into a demon.",
+        genres: ["Action", "Fantasy", "Drama"],
+      },
+      {
+        id: 2,
+        title: "Attack on Titan",
+        image: "/placeholder.svg",
+        description:
+          "Humanity lives in cities surrounded by enormous walls due to the threat of the gigantic man-eating Titans that roam the land outside.",
+        genres: ["Action", "Fantasy", "Drama"],
+      },
+      {
+        id: 3,
+        title: "Spy x Family",
+        image: "/placeholder.svg",
+        description:
+          "A spy, an assassin, and a telepath must pose as a family to complete a high-stakes mission.",
+        genres: ["Comedy", "Action", "Slice of Life"],
+      },
+      {
+        id: 4,
+        title: "Jujutsu Kaisen",
+        image: "/placeholder.svg",
+        description:
+          "A boy swallows a cursed object and has a cursed spirit stuck inside his body, forcing him to join a secret organization of Jujutsu Sorcerers.",
+        genres: ["Action", "Fantasy", "Supernatural"],
+      },
+      {
+        id: 5,
+        title: "My Hero Academia",
+        image: "/placeholder.svg",
+        description:
+          "In a world where people develop superpowers, a young boy dreams of becoming a superhero despite not having a quirk.",
+        genres: ["Action", "Superhero", "Comedy"],
+      },
+      {
+        id: 6,
+        title: "Chainsaw Man",
+        image: "/placeholder.svg",
+        description:
+          "A young man makes a deal with the devil to become a mercenary who hunts down dangerous devils.",
+        genres: ["Action", "Supernatural", "Horror"],
+      },
+    ],
+    []
+  );
+
+  // animes is now memoized and will not change unless dependencies change
 
   // Filtered animes based on search term and selected genres
   const filteredAnimes = useMemo(() => {
@@ -95,7 +99,7 @@ export default function Component() {
         anime.genres.some((genre) => selectedGenres.includes(genre));
       return matchesSearch && matchesGenres;
     });
-  }, [searchTerm, selectedGenres]);
+  }, [searchTerm, selectedGenres, animes]);
 
   // Event handler for search input
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -138,7 +142,7 @@ export default function Component() {
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline">
-                <FilterIcon className="w-5 h-5 mr-2" />
+                <FilterXIcon className="w-5 h-5 mr-2" />
                 Filters
               </Button>
             </PopoverTrigger>
@@ -244,25 +248,5 @@ export default function Component() {
         </Dialog>
       )}
     </div>
-  );
-}
-
-// FilterIcon component with type definitions
-function FilterIcon(props: FilterIconProps) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
-    </svg>
   );
 }
