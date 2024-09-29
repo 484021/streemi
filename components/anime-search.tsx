@@ -13,7 +13,7 @@ export default function AnimeSearchForm() {
     router.push(`/search/${searchQuery}`);
   };
   return (
-    <form className="w-full max-w-md" onSubmit={handleSearch}>
+    <form className="w-full max-w-md mx-auto" onSubmit={handleSearch}>
       <div className="relative">
         <Input
           type="search"
@@ -27,7 +27,7 @@ export default function AnimeSearchForm() {
           variant="ghost"
           size="icon"
           className="absolute right-2 top-1/2 -translate-y-1/2 text-white"
-          
+
         >
           <SearchIcon className="h-6 w-6" />
         </Button>
