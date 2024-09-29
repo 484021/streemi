@@ -8,9 +8,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           <div className="text-sm text-muted-foreground">
             <p>
-              Streemi is not a direct streaming platform. We simply provide
-              links and information to help you find and access anime content on
-              3rd party services.
+              Streemi links to third-party content and does not host any videos.
+              We are not responsible for the availability or legality of
+              external content.
             </p>
           </div>
           <div className="grid gap-2 md:justify-self-center">
