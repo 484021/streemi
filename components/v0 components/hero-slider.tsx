@@ -1,7 +1,10 @@
+"use client"
 import Link from "next/link";
 import luffy from "@/public/luffy.jpg";
 import Image from "next/image";
 import AnimeSearchForm from "../anime-search";
+import { Button } from "../ui/button";
+import { toast } from "sonner";
 
 //fetch recentEpisodes
 
@@ -24,11 +27,24 @@ export default function HeroSlider() {
             </p>
           </div>
           <Link
-            href="/anime-list"
-            className="inline-flex items-center justify-center h-12 px-8 rounded-md bg-primary text-primary-foreground font-medium transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+            href=""
+            // className="inline-flex items-center justify-center h-12 px-8 rounded-md bg-primary text-primary-foreground font-medium transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
             prefetch={false}
           >
-            Start Watching
+            <Button
+              className="mt-3 p-5 hover:scale-105 transition text-lg"
+              onClick={() =>
+                toast("Still working on it!", {
+                  description: "Use the search bar above until this feature is implemented.",
+                  action: {
+                    label: "Close",
+                    onClick: () => console.log("Undo"),
+                  },
+                })
+              }
+            >
+              Let&apos;s go!
+            </Button>
           </Link>
         </div>
       </div>

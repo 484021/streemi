@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import NavBar from "@/components/nav-bar";
 import Footer from "@/components/footer";
 import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,6 +44,7 @@ export default function RootLayout({
         </ThemeProvider>
         <Footer />
         <Analytics />
+        <Toaster />
       </body>
     </html>
   );

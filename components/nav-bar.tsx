@@ -17,7 +17,7 @@ export default function NavBar() {
           >
             <div className="flex items-center gap-2">
               <Bot className="h-8 w-8" />
-              <span className=" mt-1">Streemi</span>
+              <span className=" mt-1">Streemi - Beta</span>
             </div>
           </Link>
           <AnimeSearchForm />
