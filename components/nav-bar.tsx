@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Bot, MountainIcon } from "lucide-react";
+import { Bot } from "lucide-react";
 import Link from "next/link";
 import { ModeToggle } from "./ui/mode-toggle";
 import AnimeSearchForm from "./anime-search";
