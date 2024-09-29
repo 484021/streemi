@@ -33,8 +33,10 @@ export default function Page({ params }: { params: { id: string } }) {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        setEpisodeStreams(data);
-        if(!selectedStreamUrl){
+        if (!episodeStreams) {
+          setEpisodeStreams(data);
+        }
+        if (!selectedStreamUrl) {
           setSelectedStreamUrl(data.sources[0].url);
           setQuality(data.sources[0].quality);
         }
@@ -60,7 +62,7 @@ export default function Page({ params }: { params: { id: string } }) {
       // cleanup (when component destroyed or when useEffect runs twice on StrictMode)
       hls.destroy();
     };
-  }, [selectedStreamUrl, url]);
+  }, [selectedStreamUrl, url, episodeStreams]);
 
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
@@ -69,7 +71,7 @@ export default function Page({ params }: { params: { id: string } }) {
           <video className="w-full" ref={videoRef} controls autoPlay />
         </div>
 
-          <h3 className="text-lg font-medium text-center mt-2">Quality</h3>
+        <h3 className="text-lg font-medium text-center mt-2">Quality</h3>
         <div className="p-4 grid gap-4 grid-cols-6">
           {episodeStreams?.sources.map((stream) => (
             <Button
