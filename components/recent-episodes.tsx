@@ -33,7 +33,10 @@ export default function RecentEpisodes() {
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {recentEpisodes.slice(0, 6).map((episode) => (
-            <div className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:scale-105 dark:shadow-purple-950" key={episode.id}>
+            <div
+              className="group relative overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:scale-105 dark:shadow-violet-950"
+              key={episode.id}
+            >
               <Link
                 href={`/watch-anime/${episode.episodeId}`}
                 className="absolute inset-0 z-10"
