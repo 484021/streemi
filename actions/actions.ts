@@ -58,3 +58,36 @@ export async function getRecentEpisodes() {
     console.error("Error fetching data:", error);
   }
 }
+
+// export async function getAnimeByAdvancedSearch({ query }: { query: string }) {
+//   const url = CONSUMET_API_URL + `meta/anilist/advanced-search`;
+//   try {
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     console.log(data);
+//     return data.results;
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+// }
+
+// export async function getAiringAnimeBySchedule() {
+//   const url = "https://api.consumet.org/meta/anilist/airing-schedule";
+
+//   // Get today's date and calculate the date 7 days from now
+//   const today = new Date().toISOString().split("T")[0];
+//   const nextWeek = new Date(new Date().setDate(new Date().getDate() + 7))
+//     .toISOString()
+//     .split("T")[0];
+
+//   try {
+//     const response = await fetch(
+//       `${url}?weekStart=${today}&weekEnd=${nextWeek}&page=1&perPage=20`
+//     );
+//     const data = await response.json();
+//     console.log(data);
+//     return data.results;
+//   } catch (err) {
+//     console.error("Error fetching data:", err);
+//   }
+// }
