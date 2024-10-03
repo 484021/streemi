@@ -5,7 +5,6 @@ import {
 } from "@/components/ui/collapsible";
 import { Show } from "@/lib/types";
 import Image from "next/image";
-import Link from "next/link";
 
 type VideoDescriptionProps = {
   show: Show;
@@ -53,8 +52,8 @@ export default function VideoDescription({
         <div className="grid gap-1 animate-fade-in-up">
           <div className="text-sm text-muted-foreground">Genres</div>
           <div className="text-sm">
-            {show.genres.map((genre) => (
-              <span className="bg-muted rounded-full px-2 py-1 mr-2">
+            {show.genres.map((genre, index) => (
+              <span className="bg-muted rounded-full px-2 py-1 mr-2" key={index}>
                 {genre}
               </span>
             ))}

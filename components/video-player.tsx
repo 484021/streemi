@@ -19,7 +19,7 @@ export default function VideoPlayer({ selectedStreamUrl }: VideoPlayerProps) {
       hls.loadSource(selectedStreamUrl || "");
       hls.attachMedia(videoRef.current);
       hls.on(Hls.Events.ERROR, (err) => {
-        // console.log(err);
+        console.log(err);
       });
     } else {
       // console.log("load");
