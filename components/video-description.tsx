@@ -53,7 +53,10 @@ export default function VideoDescription({
           <div className="text-sm text-muted-foreground">Genres</div>
           <div className="text-sm">
             {show.genres.map((genre, index) => (
-              <span className="bg-muted rounded-full px-2 py-1 mr-2" key={index}>
+              <span
+                className="bg-muted rounded-full px-2 py-1 mr-2"
+                key={index}
+              >
                 {genre}
               </span>
             ))}
@@ -81,7 +84,6 @@ export default function VideoDescription({
           <div className="text-sm text-muted-foreground">Total Episodes</div>
           <div className="font-medium">{show.totalEpisodes}</div>
         </div>
-     
       </CollapsibleContent>
     </Collapsible>
   );

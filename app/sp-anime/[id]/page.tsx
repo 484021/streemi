@@ -3,7 +3,6 @@ import { getAnimeById, getEpisodeStreams } from "@/actions/actions";
 import EpisodesSection from "@/components/episodes-section";
 import Loading from "@/components/loading";
 import VideoDescription from "@/components/video-description";
-
 import VideoPlayer from "@/components/video-player";
 import VideoQuality from "@/components/video-quality";
 import { Show, VideoData } from "@/lib/types";
@@ -15,29 +14,47 @@ export default function Page({ params }: { params: { id: string } }) {
   const [currentEpisodeStreams, setCurrentEpisodeStreams] =
     useState<VideoData>();
   const [show, setShow] = useState<Show>();
-  const [currentEpisode, setCurrentEpisode] = useState<number>(1);
+  const [currentEpisode, setCurrentEpisode] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
       const show: Show = await getAnimeById(animeId);
+      console.log(show);
       setShow(show);
+      if (!currentEpisode) {
+        setCurrentEpisode(show.episodes.length);
+      }
       const episodeStreams: VideoData = await getEpisodeStreams(
         show.episodes[0].id
       );
       if (!currentStreamUrl) {
-        setCurrentStreamUrl(episodeStreams.sources[0].url);
+        setCurrentStreamUrl(
+          episodeStreams.sources.find(
+            (source) =>
+              source.quality === "1080p" ||
+              source.quality === "default" ||
+              source.quality === "backup"
+          )?.url || ""
+        );
       }
       if (!currentEpisodeStreams) {
         setCurrentEpisodeStreams(episodeStreams);
       }
     };
     fetchData();
-  }, [animeId, currentStreamUrl, currentEpisodeStreams]);
+  }, [animeId]);
 
   const handleChangeEpisode = async (episodeId: string) => {
     const episodeStreams: VideoData = await getEpisodeStreams(episodeId);
     setCurrentEpisodeStreams(episodeStreams);
-    setCurrentStreamUrl(episodeStreams.sources[0].url);
+    setCurrentStreamUrl(
+      episodeStreams.sources.find(
+        (source) =>
+          source.quality === "1080p" ||
+          source.quality === "default" ||
+          source.quality === "backup"
+      )?.url || ""
+    );
   };
 
   if (!show || !currentStreamUrl || !currentEpisodeStreams) {

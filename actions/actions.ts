@@ -36,3 +36,25 @@ export async function getEpisodeStreams(episodeId: string) {
     console.error("Error fetching data:", error);
   }
 }
+
+export async function getTopAiringAnime() {
+  const url = CONSUMET_API_URL + "anime/gogoanime/top-airing";
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+export async function getRecentEpisodes() {
+  const url = CONSUMET_API_URL + "anime/gogoanime/recent-episodes";
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
