@@ -26,14 +26,14 @@ export default function TopAiringAnime() {
     fetchData();
   }, [url, data]);
   return (
-    <div className="flex flex-col items-center justify-center mx-auto mb-7">
+    <div className="flex flex-col items-center justify-center mx-auto my-7">
       <h2 className="text-2xl font-bold tracking-tight md:text-3xl mb-7">
         Most Popular
       </h2>
       <div className="pt-2 flex flex-wrap w-full h-full">
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 ">
           {results.map((result) => (
-            <Link href={`/anime/${result.id}`} key={result.id}>
+            <Link href={`/sp-anime/${result.id}`} key={result.id}>
               <Card className="w-[140px] m-2 flex flex-col items-center justify-center hover:scale-110 transition-all dark:shadow-purple-950">
                 <CardHeader className="text-center">
                   {/* <CardDescription className="text-lg">{index + 1}</CardDescription> */}

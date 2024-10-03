@@ -1,24 +1,39 @@
 "use client";
 import { ChangeEvent, useState } from "react";
-import Link from "next/link";
-import { Episode } from "@/lib/types";
+import Image from "next/image"; // Import Image from Next.js
+import { Episode, Show } from "@/lib/types";
+import { toast } from "sonner";
+import { Button } from "./ui/button";
 
 type EpisodesSectionProps = {
-  episodes: Episode[];
+  show: Show;
+  setCurrentEpisode: (episode: number) => void;
+  currentEpisode: number;
+  handleChangeEpisode: (episodeId: string) => void;
 };
 
-export default function EpisodesSection({ episodes }: EpisodesSectionProps) {
-  // State to track the current page (i.e., which set of 10 episodes to display)
+export default function EpisodesSection({
+  show,
+  setCurrentEpisode,
+  currentEpisode,
+  handleChangeEpisode,
+}: EpisodesSectionProps) {
+  // State to track the current page (i.e., which set of episodes to display)
+
+  const episodes: Episode[] = show.episodes;
   const [page, setPage] = useState(1);
 
-  const itemsPerPage = 24;
+  const itemsPerPage = 10;
 
-  // Calculate the number of pages (sets of 10 episodes)
+  // Calculate the number of pages
   const totalPages = Math.ceil(episodes.length / itemsPerPage);
 
   // Calculate the episodes to display based on the current page
   const startIndex = (page - 1) * itemsPerPage;
-  const selectedEpisodes = episodes.slice(startIndex, startIndex + itemsPerPage);
+  const selectedEpisodes = episodes.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
 
   // Handle dropdown change
   const handlePageChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -26,11 +41,30 @@ export default function EpisodesSection({ episodes }: EpisodesSectionProps) {
   };
 
   return (
-    <section className="mt-12 md:mt-16">
+    <section className="">
       <h2 className="text-2xl font-bold">Episodes</h2>
-
+      <div className="flex gap-2 items-center justify-between my-4">
+        <Button
+          onClick={() => {
+            handleChangeEpisode(show.episodes[currentEpisode - 2].id);
+            setCurrentEpisode(currentEpisode - 1);
+          }}
+          disabled={currentEpisode === 1 ? true : false}
+        >
+          Episode {currentEpisode - 1}
+        </Button>
+        <Button
+          onClick={() => {
+            handleChangeEpisode(show.episodes[currentEpisode].id);
+            setCurrentEpisode(currentEpisode + 1);
+          }}
+          disabled={currentEpisode === episodes.length ? true : false}
+        >
+          Episode {currentEpisode + 1}
+        </Button>
+      </div>
       {/* Dropdown for selecting the page */}
-      <div className="mt-4">
+      <div className="my-4">
         <label htmlFor="page-select" className="mr-2 font-bold">
           Select Page:
         </label>
@@ -42,7 +76,7 @@ export default function EpisodesSection({ episodes }: EpisodesSectionProps) {
         >
           {Array.from({ length: totalPages }, (_, index) => (
             <option key={index + 1} value={index + 1}>
-              {`Episodes ${index * itemsPerPage + 1}-${Math.min(
+              {`Episodes ${index * itemsPerPage + 1} - ${Math.min(
                 (index + 1) * itemsPerPage,
                 episodes.length
               )}`}
@@ -52,18 +86,37 @@ export default function EpisodesSection({ episodes }: EpisodesSectionProps) {
       </div>
 
       {/* Display the selected episodes */}
-      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 mt-6">
-        {selectedEpisodes.map((episode, index) => (
-          <Link
-            key={index}
-            href={`/watch-anime/${episode.id}`}
-            className="bg-muted rounded-lg overflow-hidden transition-all hover:bg-muted/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            prefetch={false}
+      <div className="grid gap-4">
+        {selectedEpisodes.map((episode) => (
+          <div
+            className={`grid gap-4 ${
+              episode.number === currentEpisode ? "bg-muted" : ""
+            } rounded`}
+            key={episode.id}
+            onClick={() => {
+              handleChangeEpisode(episode.id);
+              setCurrentEpisode(episode.number);
+              toast(`Changing to Episode ${episode.number}`);
+            }}
           >
-            <div className="p-4 flex items-center justify-center">
-              <div className="text-lg font-bold">{episode.number}</div>
+            <div className="flex gap-4 items-center">
+              <div className="relative rounded-lg overflow-hidden w-[100px] aspect-video">
+                <Image
+                  src={show.image}
+                  alt="Episode Thumbnail"
+                  className="object-cover"
+                  width="178"
+                  height="100"
+                  style={{ aspectRatio: "178/100", objectFit: "cover" }}
+                />
+              </div>
+              <div className="">
+                <div className="text-lg font-medium line-clamp-1">
+                  Episode {episode.number}
+                </div>
+              </div>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </section>

@@ -1,31 +1,12 @@
-"use client";
+import { getAnimeById } from "@/actions/actions";
 import EpisodesSection from "@/components/episodes-section";
-import { CONSUMET_API_URL } from "@/lib/constants";
-import { Episode, Show } from "@/lib/types";
+import { Show } from "@/lib/types";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
 
-export default function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: string } }) {
   const { id: animeId } = params;
+  const show: Show = await getAnimeById(animeId);
 
-  const url = CONSUMET_API_URL + `anime/gogoanime/info/${animeId}`;
-
-  const [show, setShow] = useState<Show>({} as Show);
-  const [episodes, setEpisodes] = useState<Episode[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setShow(data);
-        setEpisodes(data.episodes);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, [url, show]);
   return (
     <div className="w-full max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
       <section className="grid md:grid-cols-2 gap-8 items-center">
@@ -42,6 +23,7 @@ export default function Page({ params }: { params: { id: string } }) {
           height={400}
           className="rounded-lg overflow-hidden"
           style={{ aspectRatio: "600/400", objectFit: "cover" }}
+          priority
         />
       </section>
       <section className="mt-12 md:mt-16 grid gap-8">
@@ -75,26 +57,7 @@ export default function Page({ params }: { params: { id: string } }) {
           </div>
         </div>
       </section>
-      <EpisodesSection episodes={episodes} />
-      {/* <section className="mt-12 md:mt-16">
-        <h2 className="text-2xl font-bold">Episodes</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-          {episodes.map((episode, index) => (
-            <Link
-              key={index}
-              href={`/watch-anime/${episode.id}`}
-              className="bg-muted rounded-lg overflow-hidden transition-all hover:bg-muted/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              prefetch={false}
-            >
-              <div className="p-4">
-                <div className="text-lg font-bold">
-                  Episode {episode.number}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section> */}
+      <EpisodesSection show={show} />
     </div>
   );
 }

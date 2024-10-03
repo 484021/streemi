@@ -46,11 +46,25 @@ export type SearchResult = {
   title: string;
   image: string;
   releaseDate: string | null;
-  subOrDub: 'sub' | 'dub';
+  subOrDub: "sub" | "dub";
 };
 
 export type SearchResponse = {
   currentPage: number;
   hasNextPage: boolean;
   results: SearchResult[];
+};
+
+export type VideoSource = {
+  url: string;
+  isM3U8: boolean;
+  quality: string;
+};
+
+export type VideoData = {
+  headers: {
+    Referer: string;
+  };
+  sources: VideoSource[];
+  download: string;
 };
