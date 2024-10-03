@@ -57,7 +57,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
         </div>
       </section>
-      <EpisodesSection show={show} />
+      {/* <EpisodesSection show={show} /> */}
     </div>
   );
 }
