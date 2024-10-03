@@ -48,6 +48,7 @@ export default function EpisodesSection({
           onClick={() => {
             handleChangeEpisode(show.episodes[currentEpisode - 2].id);
             setCurrentEpisode(currentEpisode - 1);
+            toast(`Changing to Episode ${currentEpisode - 1}`);
           }}
           disabled={currentEpisode === 1 ? true : false}
         >
@@ -57,6 +58,7 @@ export default function EpisodesSection({
           onClick={() => {
             handleChangeEpisode(show.episodes[currentEpisode].id);
             setCurrentEpisode(currentEpisode + 1);
+            toast(`Changing to Episode ${currentEpisode + 1}`);
           }}
           disabled={currentEpisode === episodes.length ? true : false}
         >
