@@ -1,5 +1,5 @@
 import { getAnimeById } from "@/actions/actions";
-import EpisodesSection from "@/components/episodes-section";
+// import EpisodesSection from "@/components/episodes-section";
 import { Show } from "@/lib/types";
 import Image from "next/image";
 
