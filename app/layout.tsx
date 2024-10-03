@@ -6,6 +6,7 @@ import NavBar from "@/components/nav-bar";
 import Footer from "@/components/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
+import { keywords } from "@/lib/constants";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,8 +20,15 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Streemi - Watch Anime Online Free",
+  title: {
+    default: "Streemi - Watch Anime Online Free",
+    template: "%s - Streemi",
+  },
   description: "Watch your favorite animes online for free",
+  twitter: {
+    card: "summary_large_image",
+  },
+  keywords: keywords,
 };
 
 export default function RootLayout({
