@@ -22,7 +22,7 @@ export default function VideoPlayer({ selectedStreamUrl }: VideoPlayerProps) {
         console.log(err);
       });
     } else {
-      // console.log("load");
+      console.log("load");
     }
     return () => {
       // cleanup (when component destroyed or when useEffect runs twice on StrictMode)

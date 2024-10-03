@@ -18,7 +18,6 @@ export default function WatchAnime({ animeId }: { animeId: string }) {
   useEffect(() => {
     const fetchData = async () => {
       const show: Show = await getAnimeById(animeId);
-      console.log(show);
       setShow(show);
       if (!currentEpisode) {
         setCurrentEpisode(show.episodes.length);
@@ -56,6 +55,7 @@ export default function WatchAnime({ animeId }: { animeId: string }) {
     );
   };
 
+  
   if (!show || !currentStreamUrl || !currentEpisodeStreams) {
     return <Loading />;
   }

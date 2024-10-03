@@ -1,9 +1,7 @@
 "use server";
 
-import { CONSUMET_API_URL } from "@/lib/constants";
-
 export async function searchAnime(searchQuery: string) {
-  const searchUrl = CONSUMET_API_URL + `anime/gogoanime/${searchQuery}`;
+  const searchUrl = `${process.env.CONSUMET_API_URL}/anime/gogoanime/${searchQuery}`;
   try {
     const response = await fetch(searchUrl);
     const data = await response.json();
@@ -14,7 +12,7 @@ export async function searchAnime(searchQuery: string) {
 }
 
 export async function getAnimeById(animeId: string) {
-  const animeUrl = CONSUMET_API_URL + `anime/gogoanime/info/${animeId}`;
+  const animeUrl = `${process.env.CONSUMET_API_URL}/anime/gogoanime/info/${animeId}`;
 
   try {
     const response = await fetch(animeUrl);
@@ -26,8 +24,7 @@ export async function getAnimeById(animeId: string) {
 }
 
 export async function getEpisodeStreams(episodeId: string) {
-  const episodeStreamInfoUrl =
-    CONSUMET_API_URL + `anime/gogoanime/watch/${episodeId}`;
+  const episodeStreamInfoUrl = `${process.env.CONSUMET_API_URL}/anime/gogoanime/watch/${episodeId}`;
   try {
     const response = await fetch(episodeStreamInfoUrl);
     const data = await response.json();
@@ -38,7 +35,7 @@ export async function getEpisodeStreams(episodeId: string) {
 }
 
 export async function getTopAiringAnime() {
-  const url = CONSUMET_API_URL + "anime/gogoanime/top-airing";
+  const url = `${process.env.CONSUMET_API_URL}/anime/gogoanime/top-airing`;
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -49,7 +46,7 @@ export async function getTopAiringAnime() {
 }
 
 export async function getRecentEpisodes() {
-  const url = CONSUMET_API_URL + "anime/gogoanime/recent-episodes";
+  const url = `${process.env.CONSUMET_API_URL}/anime/gogoanime/recent-episodes`;
   try {
     const response = await fetch(url);
     const data = await response.json();

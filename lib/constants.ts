@@ -1,5 +1,3 @@
-export const CONSUMET_API_URL = "https://my-consument.vercel.app/";
-
 export const keywords = [
   "anime",
   "watch anime",
