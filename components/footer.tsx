@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import InstagramButton from "./instagram-button";
 
 export default function Footer() {
   return (
@@ -21,9 +22,14 @@ export default function Footer() {
             <Link href="#" className="hover:underline" prefetch={false}>
               Terms of Service
             </Link> */}
+              <InstagramButton />
             </div>
             <div className="grid gap-2 md:justify-self-end">
-              <Link href="#" className="hover:underline" prefetch={false}>
+              <Link
+                href="https://www.instagram.com/streemi.app"
+                className="hover:underline"
+                prefetch={false}
+              >
                 Contact Us
               </Link>
               <div className="text-xs text-muted-foreground">

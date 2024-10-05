@@ -7,6 +7,7 @@ import VideoPlayer from "@/components/video-player";
 import VideoQuality from "@/components/video-quality";
 import { Show, VideoData } from "@/lib/types";
 import { useEffect, useState } from "react";
+import InstagramButton from "./instagram-button";
 
 export default function WatchAnime({ animeId }: { animeId: string }) {
   const [currentStreamUrl, setCurrentStreamUrl] = useState("");
@@ -55,7 +56,6 @@ export default function WatchAnime({ animeId }: { animeId: string }) {
     );
   };
 
-  
   if (!show || !currentStreamUrl || !currentEpisodeStreams) {
     return <Loading />;
   }
@@ -66,6 +66,7 @@ export default function WatchAnime({ animeId }: { animeId: string }) {
         <div className="relative rounded-lg overflow-hidden aspect-video">
           <VideoPlayer selectedStreamUrl={currentStreamUrl} />
         </div>
+        <InstagramButton />
         <h1 className="text-2xl font-bold mt-4">
           {show.title} - {currentEpisode}
         </h1>
@@ -75,6 +76,7 @@ export default function WatchAnime({ animeId }: { animeId: string }) {
           setCurrentStreamUrl={setCurrentStreamUrl}
         />
         <VideoDescription show={show} currentEpisode={currentEpisode} />
+        {/* <SocialShare currentLink={`https://streemi.app/${pathname}`}/> */}
       </div>
       <div className="flex flex-col gap-4">
         <EpisodesSection
