@@ -1,3 +1,4 @@
+import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./styles/globals.css";
@@ -53,6 +54,7 @@ export default function RootLayout({
         <Footer />
         <Analytics />
         <Toaster />
+        <GoogleTagManager gtmId="G-WK7FQR2HL1" />
       </body>
     </html>
   );
