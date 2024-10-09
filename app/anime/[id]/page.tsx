@@ -3,6 +3,9 @@ import { getAnimeById } from "@/actions/actions";
 import { Show } from "@/lib/types";
 import Image from "next/image";
 
+export const runtime = "edge";
+
+
 export default async function Page({ params }: { params: { id: string } }) {
   const { id: animeId } = params;
   const show: Show = await getAnimeById(animeId);

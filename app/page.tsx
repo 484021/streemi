@@ -2,6 +2,8 @@ import RecentEpisodes from "@/components/recent-episodes";
 import TopAiringAnime from "@/components/top-airing-anime";
 import HeroSlider from "@/components/v0 components/hero-slider";
 
+export const runtime = "edge";
+
 export default function Home() {
   return (
     <main className="flex items-center justify-center flex-wrap">

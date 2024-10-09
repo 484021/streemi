@@ -5,6 +5,9 @@ import { keywords } from "@/lib/constants";
 import { Show } from "@/lib/types";
 import { notFound } from "next/navigation";
 
+export const runtime = "edge";
+
+
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const { id: animeId } = params;
   const show: Show = await getAnimeById(animeId);

@@ -2,6 +2,9 @@ import {  VideoData } from "@/lib/types";
 import { getEpisodeStreams } from "@/actions/actions";
 import EpisodePlayer from "@/components/episode-player";
 
+export const runtime = "edge";
+
+
 export default async function Page({ params }: { params: { id: string } }) {
   const { id: episodeId } = params;
   // const show: Show = await getAnimeById(animeId);

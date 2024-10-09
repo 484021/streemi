@@ -1,6 +1,9 @@
 import { FrownIcon } from "lucide-react";
 import Link from "next/link";
 
+export const runtime = "edge";
+
+
 export default function NotFound() {
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 sm:px-6 lg:px-8">

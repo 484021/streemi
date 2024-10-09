@@ -3,6 +3,9 @@ import { SearchResult } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 
+export const runtime = "edge";
+
+
 export default async function Page({ params }: { params: { query: string } }) {
   const searchQuery = params.query;
 

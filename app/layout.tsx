@@ -9,6 +9,9 @@ import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
 import { keywords } from "@/lib/constants";
 
+export const runtime = "edge";
+
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
