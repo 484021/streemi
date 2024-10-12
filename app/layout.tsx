@@ -8,9 +8,9 @@ import Footer from "@/components/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
 import { keywords } from "@/lib/constants";
+import { AuthContext } from "@/components/auth-context";
 
 export const runtime = "edge";
-
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -51,8 +51,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NavBar />
-          {children}
+          <AuthContext>
+            <NavBar />
+            {children}
+          </AuthContext>
         </ThemeProvider>
         <Footer />
         <Analytics />
