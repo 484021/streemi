@@ -24,7 +24,7 @@ export default function WatchAnime({ animeId }: { animeId: string }) {
         setCurrentEpisode(show.episodes.length);
       }
       const episodeStreams: VideoData = await getEpisodeStreams(
-        show.episodes[0].id
+        show.episodes[show.episodes.length - 1].id
       );
       if (!currentStreamUrl) {
         setCurrentStreamUrl(
