@@ -8,7 +8,6 @@ import VideoQuality from "@/components/video-quality";
 import { Show, VideoData } from "@/lib/types";
 import { useEffect, useState } from "react";
 import InstagramButton from "./instagram-button";
-import { Label } from "./ui/label";
 
 export default function WatchAnime({ animeId }: { animeId: string }) {
   const [currentStreamUrl, setCurrentStreamUrl] = useState("");
