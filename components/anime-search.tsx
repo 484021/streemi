@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { SearchIcon } from "lucide-react";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
@@ -11,8 +11,9 @@ export default function AnimeSearchForm() {
   const router = useRouter();
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    toast(`Searching for ${searchQuery}...`)
+    toast(`Searching for ${searchQuery}...`);
     router.push(`/search/${searchQuery}`);
+    setSearchQuery("");
   };
   return (
     <form className="w-full max-w-md mx-auto" onSubmit={handleSearch}>
@@ -28,8 +29,6 @@ export default function AnimeSearchForm() {
           type="submit"
           size="icon"
           className="absolute right-2 top-1/2 -translate-y-1/2"
-          
-
         >
           <SearchIcon className="h-6 w-6" />
         </Button>
