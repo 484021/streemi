@@ -1,11 +1,23 @@
 "use server";
 
-export async function searchAnime(searchQuery: string) {
-  const searchUrl = `${process.env.CONSUMET_API_URL}/anime/gogoanime/${searchQuery}`;
+export async function searchAnime(searchQuery: string, pageNumber: number) {
+
+  const searchUrl = `${process.env.CONSUMET_API_URL}/anime/gogoanime/${searchQuery}?page=${pageNumber}`;
   try {
     const response = await fetch(searchUrl);
     const data = await response.json();
-    return data.results;
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+export async function searchAnimeByGenre(genre: string, pageNumber: number) {
+
+  const searchUrl = `${process.env.CONSUMET_API_URL}/anime/gogoanime/genre/${genre}?page=${pageNumber}`;
+  try {
+    const response = await fetch(searchUrl);
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error("Error fetching data:", error);
   }
