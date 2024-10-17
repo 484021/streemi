@@ -22,10 +22,10 @@ export const runtime = "edge";
 
 export default function Page({ params }: { params: { query: string } }) {
   const searchQuery = params.query;
-  const [selectedGenre, setSelectedGenre] = useState<string | null>(null); // New state for selected genre
+  const [selectedGenre, setSelectedGenre] = useState<string>(""); // New state for selected genre
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [page, setPage] = useState<number>(1);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [hasNextPage, setHasNextPage] = useState<boolean>(false);
 
   // Function to fetch anime results based on search query and page
@@ -36,13 +36,14 @@ export default function Page({ params }: { params: { query: string } }) {
       if (results) {
         setSearchResults(results.results);
         setHasNextPage(results.hasNextPage);
+        setLoading(false);
       } else {
         setSearchResults([]);
+        setLoading(false);
       }
     } catch (error) {
       console.error("Error fetching anime results:", error);
       setSearchResults([]);
-    } finally {
       setLoading(false);
     }
   };
@@ -61,9 +62,8 @@ export default function Page({ params }: { params: { query: string } }) {
     } catch (error) {
       console.error("Error fetching anime by genre:", error);
       setSearchResults([]);
-    } finally {
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   // useEffect to fetch anime based on searchQuery or selectedGenre and page
@@ -83,8 +83,8 @@ export default function Page({ params }: { params: { query: string } }) {
   };
 
   // Function to handle genre selection
-  const handleGenreChange = (genre: string) => {
-    setSelectedGenre(genre);
+  const handleGenreChange = (genreId: string) => {
+    setSelectedGenre(genreId);
     setPage(1); // Reset page to 1 when genre is changed
   };
 
@@ -105,8 +105,8 @@ export default function Page({ params }: { params: { query: string } }) {
             <SelectContent>
               <SelectGroup>
                 {genres.map((genre) => (
-                  <SelectItem key={genre} value={genre}>
-                    {genre}
+                  <SelectItem key={genre.id} value={genre.id}>
+                    {genre.title}
                   </SelectItem>
                 ))}
               </SelectGroup>
@@ -119,57 +119,34 @@ export default function Page({ params }: { params: { query: string } }) {
       {loading ? (
         <Loading />
       ) : (
-        // <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        //   {searchResults.length > 0 ? (
-        //     searchResults.map((result: SearchResult) => (
-        //       <Link href={`/sp-anime/${result.id}`} key={result.id}>
-        //         <div className="bg-card rounded-md overflow-hidden">
-        //           <Image
-        //             src={result.image}
-        //             alt="Anime Image"
-        //             width={400}
-        //             height={225}
-        //             className="w-full h-48 object-cover"
-        //             style={{ aspectRatio: "400/225", objectFit: "cover" }}
-        //           />
-        //           <div className="p-4">
-        //             <h3 className="text-lg font-semibold">{result.title}</h3>
-        //             <p className="text-sm text-muted-foreground line-clamp-2"></p>
-        //           </div>
-        //         </div>
-        //       </Link>
-        //     ))
-        //   ) : (
-        //     <p>No results found.</p> // Display message when no results
-        //   )}
-        // </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          {searchResults.length === 0 && (
-            <h3 className="col-span-full text-center text-2xl mb-72">
-              No results found.
-            </h3>
+        <>
+          {searchResults && searchResults.length > 0 ? ( // Add check for searchResults being defined
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+              {searchResults.map((anime) => (
+                <Link href={`/sp-anime/${anime.id}`} key={anime.id}>
+                  <Card className="w-auto h-full hover:scale-105 transition">
+                    <Image
+                      src={anime.image}
+                      width={300}
+                      height={400}
+                      alt="Anime Thumbnail"
+                      className="rounded-t-lg"
+                      style={{ aspectRatio: "300/400", objectFit: "cover" }}
+                    />
+                    <CardContent className="p-4">
+                      <h3 className="text-lg font-bold mb-2">{anime.title}</h3>
+                      <p className="text-sm text-[#666] mb-4">
+                        {anime.releaseDate}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <h3>No results found.</h3> // Fallback message
           )}
-          {searchResults.map((anime) => (
-            <Link href={`/sp-anime/${anime.id}`} key={anime.id}>
-              <Card className="w-auto h-full hover:scale-105 transition">
-                <Image
-                  src={anime.image}
-                  width={300}
-                  height={400}
-                  alt="Anime Thumbnail"
-                  className="rounded-t-lg"
-                  style={{ aspectRatio: "300/400", objectFit: "cover" }}
-                />
-                <CardContent className="p-4">
-                  <h3 className="text-lg font-bold mb-2">{anime.title}</h3>
-                  <p className="text-sm text-[#666] mb-4">
-                    {anime.releaseDate}
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
+        </>
       )}
 
       {/* Pagination */}
