@@ -67,7 +67,6 @@ export default function WatchAnime({ animeId }: { animeId: string }) {
           <VideoPlayer selectedStreamUrl={currentStreamUrl} />
         </div>
         <InstagramButton />
-        <h4 className="mt-4">*DM on Instagram for bug fixes and feature requests*</h4>
         <h1 className="text-2xl font-bold mt-4">
           {show.title} - {currentEpisode}
         </h1>
