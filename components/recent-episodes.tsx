@@ -14,7 +14,6 @@ type Anime = {
 
 export default async function RecentEpisodes() {
   const recentEpisodes = await getRecentEpisodes();
-  console.log(recentEpisodes);
 
   return (
     <section className="px-4">
