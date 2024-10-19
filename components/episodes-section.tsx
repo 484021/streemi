@@ -4,23 +4,27 @@ import Image from "next/image"; // Import Image from Next.js
 import { Episode, Show } from "@/lib/types";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 type EpisodesSectionProps = {
   show: Show;
-  setCurrentEpisode: (episode: number) => void;
   currentEpisode: number;
-  handleChangeEpisode: (episodeId: string) => void;
 };
 
 export default function EpisodesSection({
   show,
-  setCurrentEpisode,
   currentEpisode,
-  handleChangeEpisode,
-}: EpisodesSectionProps) {
+}: // handleChangeEpisode,
+EpisodesSectionProps) {
   // State to track the current page (i.e., which set of episodes to display)
 
   const episodes: Episode[] = show.episodes;
+  const nextEpisodeId =
+    show.episodes.find((episode) => episode.number === currentEpisode + 1)
+      ?.id || "";
+  const prevEpisodeId =
+    show.episodes.find((episode) => episode.number === currentEpisode - 1)
+      ?.id || "";
   const [page, setPage] = useState(1);
 
   const itemsPerPage = 10;
@@ -46,23 +50,23 @@ export default function EpisodesSection({
       <div className="flex gap-2 items-center justify-between my-4">
         <Button
           onClick={() => {
-            handleChangeEpisode(show.episodes[currentEpisode - 2].id);
-            setCurrentEpisode(currentEpisode - 1);
             toast(`Changing to Episode ${currentEpisode - 1}`);
           }}
           disabled={currentEpisode === 1 ? true : false}
         >
-          Episode {currentEpisode - 1}
+          <Link href={`/sp-anime/${show.id}/${prevEpisodeId}`}>
+            Episode {currentEpisode - 1}
+          </Link>
         </Button>
         <Button
           onClick={() => {
-            handleChangeEpisode(show.episodes[currentEpisode].id);
-            setCurrentEpisode(currentEpisode + 1);
             toast(`Changing to Episode ${currentEpisode + 1}`);
           }}
           disabled={currentEpisode === episodes.length ? true : false}
         >
-          Episode {currentEpisode + 1}
+          <Link href={`/sp-anime/${show.id}/${nextEpisodeId}`}>
+            Episode {currentEpisode + 1}
+          </Link>
         </Button>
       </div>
       {/* Dropdown for selecting the page */}
@@ -90,35 +94,37 @@ export default function EpisodesSection({
       {/* Display the selected episodes */}
       <div className="grid gap-4">
         {selectedEpisodes.map((episode) => (
-          <div
-            className={`grid gap-4 ${
-              episode.number === currentEpisode ? "bg-muted" : ""
-            } rounded`}
-            key={episode.id}
-            onClick={() => {
-              handleChangeEpisode(episode.id);
-              setCurrentEpisode(episode.number);
-              toast(`Changing to Episode ${episode.number}`);
-            }}
-          >
-            <div className="flex gap-4 items-center">
-              <div className="relative rounded-lg overflow-hidden w-[100px] aspect-video">
-                <Image
-                  src={show.image}
-                  alt="Episode Thumbnail"
-                  className="object-cover"
-                  width="178"
-                  height="100"
-                  style={{ aspectRatio: "178/100", objectFit: "cover" }}
-                />
-              </div>
-              <div className="">
-                <div className="text-lg font-medium line-clamp-1">
-                  Episode {episode.number}
+          <Link href={`/sp-anime/${show.id}/${episode.id}`} key={episode.id}>
+            <div
+              className={`grid gap-4 ${
+                episode.number === currentEpisode ? "bg-muted" : ""
+              } rounded`}
+              key={episode.id}
+              // onClick={() => {
+              //   handleChangeEpisode(episode.id);
+              //   setCurrentEpisode(episode.number);
+              //   toast(`Changing to Episode ${episode.number}`);
+              // }}
+            >
+              <div className="flex gap-4 items-center">
+                <div className="relative rounded-lg overflow-hidden w-[100px] aspect-video">
+                  <Image
+                    src={show.image}
+                    alt="Episode Thumbnail"
+                    className="object-cover"
+                    width="178"
+                    height="100"
+                    style={{ aspectRatio: "178/100", objectFit: "cover" }}
+                  />
+                </div>
+                <div className="">
+                  <div className="text-lg font-medium line-clamp-1">
+                    Episode {episode.number}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

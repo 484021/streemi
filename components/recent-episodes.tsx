@@ -14,6 +14,7 @@ type Anime = {
 
 export default async function RecentEpisodes() {
   const recentEpisodes = await getRecentEpisodes();
+  console.log(recentEpisodes);
 
   return (
     <section className="px-4">
@@ -21,7 +22,7 @@ export default async function RecentEpisodes() {
         <h2 className="text-3xl md:text-4xl font-bold mb-8">Recent Episodes</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {recentEpisodes.map((anime: Anime) => (
-            <Link href={`/sp-anime/${anime.id}`} key={anime.id}>
+            <Link href={`/sp-anime/${anime.id}/${anime.episodeId}`} key={anime.id}>
               <Card className="w-auto h-full hover:scale-105 transition">
                 <Image
                   src={anime.image}
