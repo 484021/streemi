@@ -21,6 +21,7 @@ export default function VideoQuality({
   setCurrentStreamUrl,
 }: VideoQualityProps) {
   const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <section className="w-full pt-4">
       <div className="container">
@@ -33,7 +34,8 @@ export default function VideoQuality({
                     isOpen ? "-rotate-180" : ""
                   }`}
                 />
-                <span className="font-semibold">Video Quality Options</span>
+                <span className="font-semibold sm:hidden">Stream Options </span>
+                <span className="font-semibold hidden sm:inline">Stream Options </span><span className="font-semibold">- Change to other streams if current stream is not working.</span>
               </div>
             </CollapsibleTrigger>
             <CollapsibleContent className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-4">

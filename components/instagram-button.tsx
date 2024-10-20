@@ -11,6 +11,7 @@ export default function InstagramButton() {
     >
       <Button
         className="
+          
           w-full sm:w-auto 
           bg-gradient-to-r from-purple-600 to-pink-500 
           hover:from-purple-700 hover:to-pink-600 

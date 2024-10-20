@@ -7,14 +7,24 @@ import { notFound } from "next/navigation";
 export const runtime = "edge";
 
 // Metadata generation
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const { id: animeId } = params;
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string; episodeId?: string[] }; // Note the change to `string[]`
+}) {
+  const { id: animeId, episodeId: episodeIdFromParams } = params;
+
   const show: Show = await getAnimeById(animeId);
+  const episodeId =
+    episodeIdFromParams?.[0] || show.episodes[show.episodes.length - 1].id;
+  const episodeNumber =
+    show.episodes.find((episode) => episode.id === episodeId)?.number ||
+    show.totalEpisodes;
 
   if (!show) return notFound();
 
   return {
-    title: `Watch ${show.title}`,
+    title: `Watch ${show.title} Episode ${episodeNumber}`,
     description: show.description,
     openGraph: {
       images: [show.image],
@@ -65,7 +75,7 @@ export default async function Page({
   const episodeStreams: VideoData = await getEpisodeStreams(episodeId);
 
   return (
-    <div className="md:grid md:grid-cols-[1fr_300px] gap-6 p-6 md:p-8 lg:p-10 flex flex-col">
+    <div className="md:grid md:grid-cols-[1fr_300px] gap-6 p-6 md:p-8 lg:p-10 flex flex-col ">
       <WatchAnime
         animeId={animeId}
         show={show}

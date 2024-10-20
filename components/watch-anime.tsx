@@ -6,6 +6,9 @@ import VideoQuality from "@/components/video-quality";
 import { Show, VideoData } from "@/lib/types";
 import { useState } from "react";
 import InstagramButton from "./instagram-button";
+import adBanner from "@/public/Blue Gradient Modern Business Investments LinkedIn Banner.png";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function WatchAnime({
   show,
@@ -18,9 +21,9 @@ export default function WatchAnime({
   episodeStreams: VideoData;
   episodeNumber: number;
 }) {
-  const [currentStreamUrl, setCurrentStreamUrl] = useState("");
   const currentEpisodeStreams = episodeStreams;
   const currentEpisode = episodeNumber;
+  const [currentStreamUrl, setCurrentStreamUrl] = useState("");
   if (!currentStreamUrl) {
     setCurrentStreamUrl(
       episodeStreams.sources.find(
@@ -34,20 +37,22 @@ export default function WatchAnime({
 
   return (
     <>
-      <div>
+      <div className="">
         <div className="relative rounded-lg overflow-hidden aspect-video">
           <VideoPlayer selectedStreamUrl={currentStreamUrl} />
         </div>
-        <InstagramButton />
         <h1 className="text-2xl font-bold mt-4">
           {show.title} - {currentEpisode}
         </h1>
-
+        <Link href="https://hop.clickbank.net/?affiliate=prodoits&vendor=socialsrep&pid=joblandingpage&ifso=instagramchatassistant" target="blank">
+          <Image src={adBanner} alt="Make Money Online" className="my-4" />
+        </Link>
         <VideoQuality
           currentEpisodeStreams={currentEpisodeStreams}
           setCurrentStreamUrl={setCurrentStreamUrl}
         />
         <VideoDescription show={show} currentEpisode={currentEpisode} />
+        <InstagramButton />
       </div>
       <div className="flex flex-col gap-4">
         <EpisodesSection show={show} currentEpisode={currentEpisode} />
