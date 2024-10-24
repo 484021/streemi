@@ -74,6 +74,9 @@ export default async function Page({
   // Fetch episode streams using the determined episodeId
   const episodeStreams: VideoData = await getEpisodeStreams(episodeId);
 
+   if (!episodeStreams || !episodeStreams.sources || episodeStreams.sources.length === 0) {
+    return notFound(); // Handle the case when episode streams don't exist
+  }
   return (
     <div className="md:grid md:grid-cols-[1fr_300px] gap-6 p-6 md:p-8 lg:p-10 flex flex-col ">
       <WatchAnime
