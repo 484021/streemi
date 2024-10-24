@@ -59,7 +59,7 @@ export default async function Page({
   const show: Show = await getAnimeById(animeId);
 
   // If episodeIdFromParams exists, access the first item in the array
-  const episodeId =
+  let episodeId =
     episodeIdFromParams?.[0] || show.episodes[show.episodes.length - 1].id;
 
   if (!show || !show.id) {
@@ -67,15 +67,27 @@ export default async function Page({
   }
 
   // Find the episode number based on episodeId
-  const episodeNumber =
+  let episodeNumber =
     show.episodes.find((episode) => episode.id === episodeId)?.number ||
     show.totalEpisodes;
 
   // Fetch episode streams using the determined episodeId
-  const episodeStreams: VideoData = await getEpisodeStreams(episodeId);
+  let episodeStreams: VideoData = await getEpisodeStreams(episodeId);
 
-   if (!episodeStreams || !episodeStreams.sources || episodeStreams.sources.length === 0) {
-    return notFound(); // Handle the case when episode streams don't exist
+  if (
+    !episodeStreams ||
+    !episodeStreams.sources ||
+    episodeStreams.sources.length === 0
+  ) {
+    console.log(
+      "No streams found for episodeId, fetching first episode streams."
+    );
+    const firstEpisodeId = show.episodes[0].id;
+    episodeStreams = await getEpisodeStreams(firstEpisodeId);
+
+    // Update the episodeId and episodeNumber to reflect the first episode
+    episodeId = firstEpisodeId;
+    episodeNumber = show.episodes[0].number;
   }
   return (
     <div className="md:grid md:grid-cols-[1fr_300px] gap-6 p-6 md:p-8 lg:p-10 flex flex-col ">
