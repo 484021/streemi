@@ -6,7 +6,6 @@ import VideoQuality from "@/components/video-quality";
 import { Show, VideoData } from "@/lib/types";
 import { useState } from "react";
 import InstagramButton from "./instagram-button";
-import AdBanner from "./ad-banner";
 
 export default function WatchAnime({
   show,
@@ -42,7 +41,6 @@ export default function WatchAnime({
         <h1 className="text-2xl font-bold mt-4">
           {show.title} - {currentEpisode}
         </h1>
-        <AdBanner />
         <VideoQuality
           currentEpisodeStreams={currentEpisodeStreams}
           setCurrentStreamUrl={setCurrentStreamUrl}
