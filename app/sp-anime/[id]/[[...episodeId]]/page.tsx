@@ -24,7 +24,7 @@ export async function generateMetadata({
   if (!show) return notFound();
 
   return {
-    title: `Watch ${show.title} Episode ${episodeNumber}`,
+    title: `Watch ${show.title} Episode ${episodeNumber} For Free No Ads`,
     description: show.description,
     openGraph: {
       images: [show.image],
