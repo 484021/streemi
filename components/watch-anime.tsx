@@ -6,6 +6,7 @@ import VideoQuality from "@/components/video-quality";
 import { Show, VideoData } from "@/lib/types";
 import { useState } from "react";
 import InstagramButton from "./instagram-button";
+import { AnimeFanSignup } from "./anime-fan-signup";
 
 export default function WatchAnime({
   show,
@@ -41,6 +42,7 @@ export default function WatchAnime({
         <h1 className="text-2xl font-bold mt-4">
           {show.title} - {currentEpisode}
         </h1>
+        <AnimeFanSignup />
         <VideoQuality
           currentEpisodeStreams={currentEpisodeStreams}
           setCurrentStreamUrl={setCurrentStreamUrl}
