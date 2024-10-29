@@ -9,11 +9,11 @@ export default function Home() {
   return (
     <main className="flex items-center justify-center flex-wrap">
       <HeroSlider />
-      <div className="-mb-20 mt-2">
+      <div className="-mb-6 mt-2 mx-4">
         <AnimeFanSignup />
       </div>
       <TopAiringAnime />
-      <div className="-mt-24">
+      <div className="-mt-10 mx-4">
         <AnimeFanSignup />
       </div>
       <RecentEpisodes />
