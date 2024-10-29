@@ -9,13 +9,10 @@ export default function Home() {
   return (
     <main className="flex items-center justify-center flex-wrap">
       <HeroSlider />
-      <div className="-mb-6 mt-2 mx-4">
+      <div className="-mb-6 mt-2 mx-4 xl:-mb-20">
         <AnimeFanSignup />
       </div>
       <TopAiringAnime />
-      <div className="-mt-10 mx-4">
-        <AnimeFanSignup />
-      </div>
       <RecentEpisodes />
     </main>
   );
