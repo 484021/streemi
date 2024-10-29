@@ -26,10 +26,10 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Streemi - Watch Anime Online Free",
+    default: "Streemi - Watch Anime Online Free with No Ads",
     template: "%s - Streemi",
   },
-  description: "Watch your favorite animes online for free",
+  description: "Watch your favorite animes online for free with no ads",
   twitter: {
     card: "summary_large_image",
   },
