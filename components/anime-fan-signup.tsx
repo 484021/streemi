@@ -19,7 +19,7 @@ export function AnimeFanSignup() {
             className="inline-flex items-center px-6 py-3 text-lg font-semibold text-purple-600 bg-white rounded-full hover:bg-purple-100 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
             target="_blank"
           >
-            Join the Streemi Newsletter
+            Join Streemi&apos;s Newsletter
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </div>
