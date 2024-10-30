@@ -7,6 +7,20 @@ import { Show, VideoData } from "@/lib/types";
 import { useState } from "react";
 import InstagramButton from "./instagram-button";
 import { AnimeFanSignup } from "./anime-fan-signup";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  RedditShareButton,
+  TelegramShareButton,
+  FacebookIcon,
+  XIcon,
+  WhatsappIcon,
+  RedditIcon,
+  TelegramIcon,
+  Insta,
+} from "react-share";
+import { usePathname } from "next/navigation";
 
 export default function WatchAnime({
   show,
@@ -22,6 +36,8 @@ export default function WatchAnime({
   const currentEpisodeStreams = episodeStreams;
   const currentEpisode = episodeNumber;
   const [currentStreamUrl, setCurrentStreamUrl] = useState("");
+
+  // Set default stream URL if not already set
   if (!currentStreamUrl) {
     setCurrentStreamUrl(
       episodeStreams.sources.find(
@@ -33,6 +49,10 @@ export default function WatchAnime({
     );
   }
 
+  // Get the current path using usePathname
+  const pathname = usePathname();
+  const shareUrl = `https://streemi.app${pathname}`;
+
   return (
     <>
       <div className="">
@@ -40,8 +60,41 @@ export default function WatchAnime({
           <VideoPlayer selectedStreamUrl={currentStreamUrl} />
         </div>
         <h1 className="text-2xl font-bold mt-4">
-          {show.title} - {currentEpisode}
+          {show.title} - Episode {currentEpisode}
         </h1>
+
+        {/* Social Share Buttons */}
+        <div className="flex space-x-4 mt-4">
+          <FacebookShareButton url={shareUrl} hashtag={show.title}>
+            <FacebookIcon size={32} round />
+          </FacebookShareButton>
+          <TwitterShareButton
+            url={shareUrl}
+            title={`Watch ${show.title} Episode ${currentEpisode} for free no ads!`}
+            hashtags={[show.title, "Streemi", "Anime", "Watch", "Free", "NoAds"]}
+          >
+            <XIcon size={32} round />
+          </TwitterShareButton>
+          <WhatsappShareButton
+            url={shareUrl}
+            title={`Watch ${show.title} Episode ${currentEpisode} for free no ads!`}
+          >
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton>
+          <RedditShareButton
+            url={shareUrl}
+            title={`Watch ${show.title} Episode ${currentEpisode} for free no ads!`}
+          >
+            <RedditIcon size={32} round />
+          </RedditShareButton>
+          <TelegramShareButton
+            url={shareUrl}
+            title={`Watch ${show.title} Episode ${currentEpisode} for free no ads!`}
+          >
+            <TelegramIcon size={32} round />
+          </TelegramShareButton>
+        </div>
+
         <AnimeFanSignup />
         <VideoQuality
           currentEpisodeStreams={currentEpisodeStreams}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ModeToggle } from "./ui/mode-toggle";
 import AnimeSearchForm from "./anime-search";
 
+
 export default function NavBar() {
   return (
     <header className="bg-background sticky top-0 z-50 w-full border-b ">
