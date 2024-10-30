@@ -8,7 +8,6 @@ import Footer from "@/components/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
 import { keywords } from "@/lib/constants";
-import AdSense from "@/components/AdSense";
 import NextTopLoader from "nextjs-toploader";
 
 export const runtime = "edge";
@@ -44,7 +43,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <AdSense />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
