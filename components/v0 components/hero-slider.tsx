@@ -27,9 +27,8 @@ export default function HeroSlider() {
           </div>
           <div className="flex justify-center">
             <p className="text-lg md:text-xl max-w-[700px] text-center text-violet-200 capitalize">
-              Stream Your Favorite Animes Ad-Free Today!
-              <br /> We are commited to provide the best streaming experience
-              with no ads, no geo-blocking and over 10,000 titles.
+              We are commited to provide the best streaming experience with no
+              ads, no geo-blocking and over 10,000 titles.
             </p>
           </div>
           <Link
@@ -38,7 +37,7 @@ export default function HeroSlider() {
             prefetch={false}
           >
             <Button
-              className="mt-3 p-5 hover:scale-105 transition text-lg"
+              className="mt-3 p-6 hover:scale-105 transition text-2xl"
               onClick={() =>
                 toast("Getting all the animes!", {
                   description: "Use the search bar or select genres to filter.",
@@ -49,7 +48,7 @@ export default function HeroSlider() {
                 })
               }
             >
-              Let&apos;s go!
+              Watch Now!
             </Button>
           </Link>
         </div>
