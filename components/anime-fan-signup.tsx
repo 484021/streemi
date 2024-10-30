@@ -9,18 +9,17 @@ export function AnimeFanSignup() {
       <div className="flex flex-col md:flex-row items-center justify-between">
         <div className="mb-6 md:mb-0 md:mr-6">
           <h2 className="text-3xl font-bold text-white mb-2">
-            Be the First to Know! 🚀
+            Are you caught up?
           </h2>
           <p className="text-lg text-white mb-4">
-            Get early access to new episodes, manga reader, exclusive art, special deals, and
-            more!
+           We&apos;re looking for beta testers. Get notified when Streemi&apos;s Manga Reader goes live. 
           </p>
           <Link
             href="https://email.streemi.app/form"
             className="inline-flex items-center px-6 py-3 text-lg font-semibold text-purple-600 bg-white rounded-full hover:bg-purple-100 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
             target="_blank"
           >
-            Unlock Exclusive Perks!
+            Join the Streemi Newsletter
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </div>
