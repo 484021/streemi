@@ -18,7 +18,6 @@ import {
   WhatsappIcon,
   RedditIcon,
   TelegramIcon,
-  Insta,
 } from "react-share";
 import { usePathname } from "next/navigation";
 
