@@ -27,6 +27,7 @@ export default function Footer() {
             <div className="grid gap-2 md:justify-self-end">
               <Link
                 href="https://www.instagram.com/streemi.app"
+                target="_blank"
                 className="hover:underline"
                 prefetch={false}
               >
