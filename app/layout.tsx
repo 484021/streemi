@@ -7,7 +7,7 @@ import NavBar from "@/components/nav-bar";
 import Footer from "@/components/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
-import { keywords } from "@/lib/constants";
+import { animeKeywords } from "@/lib/constants";
 import NextTopLoader from "nextjs-toploader";
 
 export const runtime = "edge";
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
-  keywords: keywords,
+  keywords: animeKeywords,
 };
 
 export default function RootLayout({
@@ -42,8 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-      </head>
+      <head></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
