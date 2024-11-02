@@ -1,4 +1,5 @@
 import { getAnimeById } from "@/actions/actions";
+import { AnimeFanSignup } from "@/components/anime-fan-signup";
 import SimplifiedEpisodesSectionComponent from "@/components/simplified-episodes-section";
 import { animeKeywords } from "@/lib/constants";
 // import EpisodesSection from "@/components/episodes-section";
@@ -184,6 +185,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
         </div>
       </section>
+      <AnimeFanSignup />
       <SimplifiedEpisodesSectionComponent show={show} />
     </div>
   );
