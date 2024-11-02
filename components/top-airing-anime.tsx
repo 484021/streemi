@@ -23,7 +23,7 @@ export default async function TopAiringAnime() {
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {topAiringAnime.map((anime: Anime) => (
-            <Link href={`/sp-anime/${anime.id}`} key={anime.id}>
+            <Link href={`/anime/${anime.id}`} key={anime.id}>
               <Card className="w-auto h-full hover:scale-105 transition">
                 <Image
                   src={anime.image}

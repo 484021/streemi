@@ -20,6 +20,7 @@ import {
   TelegramIcon,
 } from "react-share";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function WatchAnime({
   show,
@@ -58,8 +59,8 @@ export default function WatchAnime({
         <div className="relative rounded-lg overflow-hidden aspect-video">
           <VideoPlayer selectedStreamUrl={currentStreamUrl} />
         </div>
-        <h1 className="text-2xl font-bold mt-4">
-          {show.title} - Episode {currentEpisode}
+        <h1 className="text-2xl font-bold mt-4 ">
+          <Link href={`/anime/${show.title}`}><span className="hover:underline">{show.title}</span></Link> - Episode {currentEpisode}
         </h1>
 
         {/* Social Share Buttons */}

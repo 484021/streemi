@@ -123,7 +123,7 @@ export default function Page({ params }: { params: { query: string } }) {
           {searchResults && searchResults.length > 0 ? ( // Add check for searchResults being defined
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
               {searchResults.map((anime) => (
-                <Link href={`/sp-anime/${anime.id}`} key={anime.id}>
+                <Link href={`/anime/${anime.id}`} key={anime.id}>
                   <Card className="w-auto h-full hover:scale-105 transition">
                     <Image
                       src={anime.image}
