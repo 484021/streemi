@@ -1,7 +1,6 @@
 import { getAnimeById } from "@/actions/actions";
 import { AnimeFanSignup } from "@/components/anime-fan-signup";
 import SimplifiedEpisodesSectionComponent from "@/components/simplified-episodes-section";
-import { animeKeywords } from "@/lib/constants";
 // import EpisodesSection from "@/components/episodes-section";
 import { Show } from "@/lib/types";
 import Image from "next/image";
@@ -124,7 +123,6 @@ export async function generateMetadata({
       show.subOrDub,
       show.type,
       show.totalEpisodes,
-      ...animeKeywords,
       ...pageKeywords,
     ],
   };

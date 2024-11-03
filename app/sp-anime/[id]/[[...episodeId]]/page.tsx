@@ -2,7 +2,6 @@ import { getAnimeById, getEpisodeStreams } from "@/actions/actions";
 import RecentEpisodes from "@/components/recent-episodes";
 import TopAiringAnime from "@/components/top-airing-anime";
 import WatchAnime from "@/components/watch-anime";
-import { animeKeywords } from "@/lib/constants";
 import { Show, VideoData } from "@/lib/types";
 import { notFound } from "next/navigation";
 
