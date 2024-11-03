@@ -12,7 +12,7 @@ export function AnimeFanSignup() {
             Are you caught up?
           </h2>
           <p className="text-lg text-white mb-4">
-           Help us provide the best experience for anime fans by being a beta tester. Get notified when Streemi&apos;s Manga Reader goes live. 
+           Be the first to know when our Free Manga Reader with No Ads goes live. 
           </p>
           <Link
             href="https://email.streemi.app/form"
