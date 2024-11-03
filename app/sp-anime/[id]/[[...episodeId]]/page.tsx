@@ -16,13 +16,14 @@ export async function generateMetadata({
   const { id: animeId, episodeId: episodeIdFromParams } = params;
 
   const show: Show = await getAnimeById(animeId);
+  if (!show || !show.id || !show.episodes || show.episodes.length === 0) {
+    return notFound(); // Handle the case when show doesn't exist
+  }
   const episodeId =
     episodeIdFromParams?.[0] || show.episodes[show.episodes.length - 1].id;
   const episodeNumber =
     show.episodes.find((episode) => episode.id === episodeId)?.number ||
     show.totalEpisodes;
-
-  if (!show) return notFound();
 
   const pageKeywords = [
     `watch ${show.title}`,
@@ -144,7 +145,6 @@ export default async function Page({
   // If episodeIdFromParams exists, access the first item in the array
   let episodeId =
     episodeIdFromParams?.[0] || show.episodes[show.episodes.length - 1].id;
-
 
   // Find the episode number based on episodeId
   let episodeNumber =
