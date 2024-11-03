@@ -124,7 +124,6 @@ export async function generateMetadata({
       show.subOrDub,
       show.type,
       show.totalEpisodes,
-      ...animeKeywords,
       ...pageKeywords,
     ],
   };
@@ -139,14 +138,14 @@ export default async function Page({
 
   // Fetch the show details based on animeId
   const show: Show = await getAnimeById(animeId);
+  if (!show || !show.id || !show.episodes || show.episodes.length === 0) {
+    return notFound(); // Handle the case when show doesn't exist
+  }
 
   // If episodeIdFromParams exists, access the first item in the array
   let episodeId =
     episodeIdFromParams?.[0] || show.episodes[show.episodes.length - 1].id;
 
-  if (!show || !show.id) {
-    return notFound(); // Handle the case when show doesn't exist
-  }
 
   // Find the episode number based on episodeId
   let episodeNumber =
