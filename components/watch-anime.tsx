@@ -119,8 +119,7 @@ export default function WatchAnime({
         <EpisodesSection show={show} currentEpisode={currentEpisode} />
       </div>
       <div>
-        <TopAiringAnime />
-        <RecentEpisodes />
+
       </div>
     </>
   );

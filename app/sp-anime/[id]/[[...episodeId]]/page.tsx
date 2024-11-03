@@ -1,4 +1,6 @@
 import { getAnimeById, getEpisodeStreams } from "@/actions/actions";
+import RecentEpisodes from "@/components/recent-episodes";
+import TopAiringAnime from "@/components/top-airing-anime";
 import WatchAnime from "@/components/watch-anime";
 import { animeKeywords } from "@/lib/constants";
 import { Show, VideoData } from "@/lib/types";
@@ -170,14 +172,18 @@ export default async function Page({
     episodeNumber = show.episodes[0].number;
   }
   return (
-    <div className="md:grid md:grid-cols-[1fr_300px] gap-6 p-6 md:p-8 lg:p-10 flex flex-col ">
-      <WatchAnime
-        animeId={animeId}
-        show={show}
-        episodeId={episodeId}
-        episodeStreams={episodeStreams}
-        episodeNumber={episodeNumber}
-      />
-    </div>
+    <>
+      <div className="md:grid md:grid-cols-[1fr_300px] gap-6 p-6 md:p-8 lg:p-10 flex flex-col ">
+        <WatchAnime
+          animeId={animeId}
+          show={show}
+          episodeId={episodeId}
+          episodeStreams={episodeStreams}
+          episodeNumber={episodeNumber}
+        />
+      </div>
+      <TopAiringAnime />
+      <RecentEpisodes />
+    </>
   );
 }
