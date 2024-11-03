@@ -21,6 +21,8 @@ import {
 } from "react-share";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import TopAiringAnime from "./top-airing-anime";
+import RecentEpisodes from "./recent-episodes";
 
 export default function WatchAnime({
   show,
@@ -60,7 +62,10 @@ export default function WatchAnime({
           <VideoPlayer selectedStreamUrl={currentStreamUrl} />
         </div>
         <h1 className="text-2xl font-bold mt-4 ">
-          <Link href={`/anime/${show.title}`}><span className="hover:underline">{show.title}</span></Link> - Episode {currentEpisode}
+          <Link href={`/anime/${show.title}`}>
+            <span className="hover:underline">{show.title}</span>
+          </Link>{" "}
+          - Episode {currentEpisode}
         </h1>
 
         {/* Social Share Buttons */}
@@ -71,7 +76,14 @@ export default function WatchAnime({
           <TwitterShareButton
             url={shareUrl}
             title={`Watch ${show.title} Episode ${currentEpisode} for free no ads!`}
-            hashtags={[show.title, "Streemi", "Anime", "Watch", "Free", "NoAds"]}
+            hashtags={[
+              show.title,
+              "Streemi",
+              "Anime",
+              "Watch",
+              "Free",
+              "NoAds",
+            ]}
           >
             <XIcon size={32} round />
           </TwitterShareButton>
@@ -105,6 +117,10 @@ export default function WatchAnime({
       </div>
       <div className="flex flex-col gap-4">
         <EpisodesSection show={show} currentEpisode={currentEpisode} />
+      </div>
+      <div>
+        <TopAiringAnime />
+        <RecentEpisodes />
       </div>
     </>
   );
