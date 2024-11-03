@@ -21,8 +21,7 @@ import {
 } from "react-share";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import TopAiringAnime from "./top-airing-anime";
-import RecentEpisodes from "./recent-episodes";
+
 
 export default function WatchAnime({
   show,
