@@ -18,13 +18,12 @@ export async function generateMetadata({
   const { id: animeId, episodeId: episodeIdFromParams } = params;
 
   const show: Show = await getAnimeById(animeId);
+  if (!show || !show.episodes || show.episodes.length === 0) return notFound();
   const episodeId =
     episodeIdFromParams?.[0] || show.episodes[show.episodes.length - 1].id;
   const episodeNumber =
     show.episodes.find((episode) => episode.id === episodeId)?.number ||
     show.totalEpisodes;
-
-  if (!show) return notFound();
 
   const pageKeywords = [
     `watch ${show.title}`,
